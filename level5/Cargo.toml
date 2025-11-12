@@ -1,0 +1,65 @@
+[package]
+name = "quantum-limit-graph"
+version = "2.4.0"
+edition = "2021"
+authors = ["Quantum Research Team"]
+description = "High-performance Rust implementation of Quantum Limit Graph v2.4.0 Level 3"
+
+[dependencies]
+# Quantum computing
+qiskit-rust = { version = "0.1", optional = true }
+ndarray = "0.15"
+ndarray-linalg = "0.16"
+num-complex = "0.4"
+
+# Async runtime for concurrent processing
+tokio = { version = "1.35", features = ["full"] }
+async-trait = "0.1"
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = "0.3"
+
+# Performance
+rayon = "1.8"
+parking_lot = "0.12"
+dashmap = "5.5"
+
+# Memory management
+crossbeam = "0.8"
+
+# Error handling
+anyhow = "1.0"
+thiserror = "1.0"
+
+# Level 4 dependencies
+uuid = { version = "1.6", features = ["v4", "serde"] }
+sha2 = "0.10"
+
+# Level 5 dependencies (MetaAgent)
+chrono = { version = "0.4", features = ["serde"] }
+
+# Advanced Level 4 components
+# rhai = "1.16" # Uncomment for actual Rhai execution
+
+[dev-dependencies]
+criterion = "0.5"
+proptest = "1.4"
+
+[features]
+default = ["quantum-sim"]
+quantum-sim = []
+quantum-hardware = ["qiskit-rust"]
+
+[[bench]]
+name = "quantum_benchmarks"
+harness = false
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1

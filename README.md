@@ -340,7 +340,7 @@ See `../CONTRIBUTING.md` for contribution guidelines.
 
 ## License
 
-See `../LICENSE` for license information.
+CC BY-NC-SA 4.0 License - See LICENSE for details
 
 ## Support
 
